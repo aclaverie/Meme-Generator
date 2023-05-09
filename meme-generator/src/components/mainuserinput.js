@@ -30,8 +30,7 @@ function MainUserInput(){
           MemesData.data.memes.map((meme) => {
             return ( meme.id )
           })
-        );
-        
+        );        
         //Get number of objects in memes array
         const arraylength = MemesData.data.memes.length
           
@@ -41,8 +40,7 @@ function MainUserInput(){
         //Select the Id for the object from memes
         let selectedID = memeArray[0][randNum];
         
-        //Extract meme object and return
-        
+        //Extract meme object based on Id and return
         MemesData.data.memes.map((meme) => {
           if(meme.id === selectedID){
             setMeme(meme);

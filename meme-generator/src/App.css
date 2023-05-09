@@ -75,8 +75,12 @@
   cursor: pointer;
   color: #FFFFFF;
   grid-column: 1 / -1;
-  
 }
+.user-display{
+  align-items: center;
+  margin:auto;
+} 
+
 /* .user-input, .user-display, .user-btn{
   padding-top: 12px;
   padding-bottom: 12px;
@@ -96,9 +100,7 @@
  .user-input{
   
 }
-.user-display{
-  
-} 
+
 
  .user-top{
   
