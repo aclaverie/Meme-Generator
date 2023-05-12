@@ -44,7 +44,7 @@
 
 .mainbody{
   background-color: #ffffff;
-  border: 1px solid #FF0000;
+  border: 0px solid #FF0000;
   min-height: 80vh;
   display: flex;
   align-items: center;
@@ -52,8 +52,8 @@
   justify-content: flex-start;
 }
 .main-user{
-  width: 96%;
-  border: 1px solid #FF0000;
+  width: 94%;
+  border: 0px solid #FF0000;
   padding: 12px;
 }
 
@@ -77,34 +77,14 @@
   grid-column: 1 / -1;
 }
 .user-display{
+  padding-top: 14px;
   align-items: center;
   margin:auto;
 } 
-
-/* .user-input, .user-display, .user-btn{
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border: 1px solid #FF0000;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-} 
-
-.user-btn{
-  display:block;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.user-image{
+  max-width:100%;
 }
 
- .user-input{
-  
-}
-
-
- .user-top{
-  
-} */
 .App-footer{
   background-color: #740F37;
   color: #FFFFFF;

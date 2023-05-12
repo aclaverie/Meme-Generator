@@ -22,17 +22,27 @@ function getObjectSimple(){
 
 function MainUserInput(){
     const [memeSelect, setMeme] = useState(0);
-
+    const [allMemesData, setAllMemesData] = useState(MemesData);
+    const [userMEME, setUserMEME] = useState([{
+      toptext: "",
+      bottomtext: "",
+      image: 'https://i.imgflip.com/1g8my4.jpg'
+}]);
+   
     function getSelectedObj(e){
         e.preventDefault();
+        let tTEXT = document.getElementById("top").value;
+        let bTEXT = document.getElementById("bot").value;
+        
+        
         //Get list of ids alone
         const memeArray = new Array(
-          MemesData.data.memes.map((meme) => {
+          allMemesData.data.memes.map((meme) => {
             return ( meme.id )
           })
         );        
         //Get number of objects in memes array
-        const arraylength = MemesData.data.memes.length
+        const arraylength = allMemesData.data.memes.length
           
         //Get random number based on length of array
         let randNum = Math.floor(Math.random() * arraylength);
@@ -41,23 +51,32 @@ function MainUserInput(){
         let selectedID = memeArray[0][randNum];
         
         //Extract meme object based on Id and return
-        MemesData.data.memes.map((meme) => {
+        allMemesData.data.memes.map((meme) => {
           if(meme.id === selectedID){
             setMeme(meme);
           }
           return memeSelect;
         });
+        let iTEXT = memeSelect.url;
+        // console.log(iTEXT);
+        setUserMEME(
+          {
+            toptext:{tTEXT},
+            bottomtext:{bTEXT},
+            image: memeSelect.url
+        });
+        
     }
-
+    // console.log(userMEME);
     return(
         <div className="main-user">
             <div className="form">
-                <input  type='text'  className="user-input" placeholder='Enter top word/s' />
-                <input  type='text'  className="user-input" placeholder='Enter bottom word/s'/>                
+                <input  id='top' type='text'  className="user-input" placeholder='Enter top word/s' />
+                <input  id='bot' type='text'  className="user-input" placeholder='Enter bottom word/s'/>                
                 <Button className='user-btn' variant="contained" onClick={getSelectedObj} >Generate A New Meme Image</Button>
             </div>
             <div className="user-display">
-                <img src={memeSelect.url} alt={memeSelect.name} width="800px"/>
+                <img src={userMEME.url} alt={userMEME.name} className='user-image'/>
             </div>
         </div>
     );
