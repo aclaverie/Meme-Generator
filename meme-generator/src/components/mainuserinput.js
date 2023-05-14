@@ -22,6 +22,8 @@ function getObjectSimple(){
 
 function MainUserInput(){
     const [memeSelect, setMeme] = useState(0);
+    const [topText, setInputTop] = useState(0);
+    const [botText, setInputBottom] = useState(0);
     const [allMemesData, setAllMemesData] = useState(MemesData);
     const [userMEME, setUserMEME] = useState([{
       toptext: "",
@@ -31,10 +33,12 @@ function MainUserInput(){
    
     function getSelectedObj(e){
         e.preventDefault();
-        let tTEXT = document.getElementById("top").value;
-        let bTEXT = document.getElementById("bot").value;
+        let tTEXT = topText;
+        let bTEXT = botText;
+        // console.log(tTEXT+" "+bTEXT)
         
-        
+        setAllMemesData(MemesData);
+
         //Get list of ids alone
         const memeArray = new Array(
           allMemesData.data.memes.map((meme) => {
@@ -58,25 +62,36 @@ function MainUserInput(){
           return memeSelect;
         });
         let iTEXT = memeSelect.url;
-        // console.log(iTEXT);
+
         setUserMEME(
           {
-            toptext:{tTEXT},
-            bottomtext:{bTEXT},
-            image: memeSelect.url
+            toptext: tTEXT,
+            bottomtext: bTEXT,
+            image: iTEXT
         });
         
     }
-    // console.log(userMEME);
+    
     return(
         <div className="main-user">
             <div className="form">
-                <input  id='top' type='text'  className="user-input" placeholder='Enter top word/s' />
-                <input  id='bot' type='text'  className="user-input" placeholder='Enter bottom word/s'/>                
+                <input  
+                id='top' 
+                type='text'  
+                className="user-input" 
+                placeholder='Enter top word/s'
+                onChange={e => setInputTop(e.target.value)} />
+                <input  
+                id='bot' 
+                type='text'  
+                className="user-input" 
+                placeholder='Enter bottom word/s'
+                onChange={e => setInputBottom(e.target.value)} />                
                 <Button className='user-btn' variant="contained" onClick={getSelectedObj} >Generate A New Meme Image</Button>
             </div>
             <div className="user-display">
-                <img src={userMEME.url} alt={userMEME.name} className='user-image'/>
+              {console.log(userMEME.image)}
+                <img src={userMEME.image} alt={userMEME.image} className='user-image'/>
             </div>
         </div>
     );
