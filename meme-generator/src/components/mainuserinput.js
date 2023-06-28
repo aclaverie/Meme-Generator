@@ -22,8 +22,10 @@ function getObjectSimple(){
 
 function MainUserInput(){
     const [memeSelect, setMeme] = useState(0);
-    const [topText, setInputTop] = useState(0);
-    const [botText, setInputBottom] = useState(0);
+    const [text, settext] = useState({
+      top: '',
+      bottom: '',
+    });
     const [allMemesData, setAllMemesData] = useState(MemesData);
     const [userMEME, setUserMEME] = useState([{
       toptext: "",
